@@ -152,6 +152,10 @@ func parseFlags(cpuProfile *bool) {
 		"Password of Redis")
 	flag.StringVar(&redisSuffix, "redis_suffix", "",
 		"Redis key suffix - use unique identifier to avoid hchecker overlap each other on restart.")
+	flag.StringVar(&redisIdleTimeout, "redis_idle_timeout", REDIS_IDLE_TIMEOUT,
+		"Close redis connections after remaining idle for this duration (0 = no connection close)")
+	flag.StringVar(&redisMaxIdle, "redis_max_idle", REDIS_MAX_IDLE,
+		"Maximum number of idle redis connections in the pool")
 	flag.BoolVar(cpuProfile, "cpuprofile", false,
 		"Write CPU profile to \"hchecker.prof\" (current directory)")
 	flag.BoolVar(&dryRun, "dryrun", false,
